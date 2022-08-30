@@ -24,3 +24,5 @@ let selectedValue;
 arrExpensesStored.length>0 && updateArrayExpenseTable(); // actuliza con gastos almacenados
 
 (createRandomExpenses == "true") ? randomExpenses():false; // si no hay gastos ingresados, genera 9 aleatorios.
+
+showMaxMin();

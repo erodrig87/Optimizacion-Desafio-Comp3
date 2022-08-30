@@ -1,17 +1,17 @@
 //Devuelve la posicion del gasto maximo
 const maxGasto = () => {
     const valores = arrExpenses.map((object) => object.valor);
-    max = Math.max.apply(null,valores);
+    let max = Math.max(...valores);
     localStorage.setItem("MAX_EXPENSE", JSON.stringify(max));
-    return valores.indexOf(max);
+    return max;
 }
 
 //Devuelve la posicion del gasto minimo
 const minGasto = () => {
     const valores = arrExpenses.map((object) => object.valor);
-    min = Math.min.apply(null,valores);
+    let min = Math.min(...valores);
     localStorage.setItem("MIN_EXPENSE", JSON.stringify(min));
-    return valores.indexOf(min);
+    return min;
 }
 //Devuelve el avgExpense de gastos ingresados
 const avgExpenses = () => {
@@ -23,13 +23,17 @@ const avgExpenses = () => {
     return prom;
 }
 
-//Devuelve el la suma total del array
+//Devuelve la suma total del array
 const sumExpenses = (_array) => {
+    
     let total_sum = 0;
+    
     _array.forEach(function(gasto) { total_sum += gasto.valor });
     localStorage.setItem("total_sum", JSON.stringify(total_sum));
     return total_sum;
 }
+
+
 
 //devuelve array de sumas x categoria
 function sumExpensesByCategory(){

@@ -157,9 +157,10 @@ function filterCategory(_array,filterCategory){
 function updateCanvas(objeto){
     let canvas = document.getElementById("textSelectedRow");
     let context = canvas.getContext("2d");
+    const { valor } = objeto; // desestructuracion
     context.clearRect(0, 0, canvas.width, canvas.height);
     context.font = "40px Arial";
-    context.fillText(`$ ${objeto.valor}`, 30, 50);
+    context.fillText(`$ ${valor}`, 30, 50);
 }
 
 //habilita visibilidad de fila segun filtro categoria
@@ -179,4 +180,18 @@ function categoryFilterNotChecked(filterSelected){
             document.getElementById(objeto.ID).style.visibility = "collapse";
         }
     })    
+}
+
+function showMaxMin() {
+
+    let min = minGasto();
+    let max = maxGasto();
+
+    nodoform = document.getElementById("detailedExpenses");
+    nodo = document.createElement("div");
+    
+    nodo.id = "min";
+    nodo.classList = "alert alert-info"; nodo.style.visibility = "visible";
+    nodo.innerHTML = `Valor minimo = ${min} || Valor Maximo = ${max}`;
+    nodoform.appendChild(nodo);
 }
